@@ -2,10 +2,10 @@ const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const cors = require('cors');
 const app = express();
-const port = 3008;
+const port = process.env.PORT || 3008;
 
 // Conectar ao banco de dados SQLite
-const db = new sqlite3.Database('./banco_de_dados.db', (err) => {
+const db = new sqlite3.Database(process.env.DB_PATH || './banco_de_dados.db', (err) => {
     if (err) {
         console.error('Erro ao conectar ao banco de dados:', err.message);
     } else {
