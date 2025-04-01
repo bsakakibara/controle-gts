@@ -3,9 +3,20 @@ const sqlite3 = require('sqlite3').verbose();
 const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3008;
+const path = require('path');
+const fs = require('fs');
+
+// Caminho relativo para o banco de dados
+const dbPath = path.join(__dirname, 'banco_de_dados.db');
+
+ // Verificar se o diretório 'backend' existe, se não, criar
+ const dirPath = path.join(__dirname);
+ if (!fs.existsSync(dirPath)) {
+     fs.mkdirSync(dirPath, { recursive: true });
+ }
 
 // Conectar ao banco de dados SQLite
-const db = new sqlite3.Database(process.env.DB_PATH || './banco_de_dados.db', (err) => {
+const db = new sqlite3.Database(dbPath, (err) => {
     if (err) {
         console.error('Erro ao conectar ao banco de dados:', err.message);
     } else {
