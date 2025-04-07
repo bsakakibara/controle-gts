@@ -9,11 +9,11 @@ const fs = require('fs');
 // Caminho relativo para o banco de dados
 const dbPath = path.join(__dirname, 'banco_de_dados.db');
 
- // Verificar se o diretório 'backend' existe, se não, criar
- const dirPath = path.join(__dirname);
- if (!fs.existsSync(dirPath)) {
-     fs.mkdirSync(dirPath, { recursive: true });
- }
+//  // Verificar se o diretório 'backend' existe, se não, criar
+//  const dirPath = path.join(__dirname);
+//  if (!fs.existsSync(dirPath)) {
+//      fs.mkdirSync(dirPath, { recursive: true });
+//  }
 
 // Conectar ao banco de dados SQLite
 const db = new sqlite3.Database(dbPath, (err) => {
@@ -54,17 +54,17 @@ const db = new sqlite3.Database(dbPath, (err) => {
                 console.log('Tabela "despesa" verificada ou criada com sucesso.');
 
                 // Adicionar a coluna 'vencimento' caso não exista
-                db.run(`ALTER TABLE despesa ADD COLUMN vencimento DATE`, (err) => {
-                    if (err) {
-                        if (err.message.includes("duplicate column")) {
-                            console.log("A coluna 'vencimento' já existe.");
-                        } else {
-                            console.error("Erro ao adicionar coluna 'vencimento':", err.message);
-                        }
-                    } else {
-                        console.log("Coluna 'vencimento' adicionada com sucesso.");
-                    }
-                });
+                // db.run(`ALTER TABLE despesa ADD COLUMN vencimento DATE`, (err) => {
+                //     if (err) {
+                //         if (err.message.includes("duplicate column")) {
+                //             console.log("A coluna 'vencimento' já existe.");
+                //         } else {
+                //             console.error("Erro ao adicionar coluna 'vencimento':", err.message);
+                //         }
+                //     } else {
+                //         console.log("Coluna 'vencimento' adicionada com sucesso.");
+                //     }
+                // });
             }
         });
     }
