@@ -9,12 +9,6 @@ const fs = require('fs');
 // Caminho relativo para o banco de dados
 const dbPath = path.join(__dirname, 'banco_de_dados.db');
 
-//  // Verificar se o diretório 'backend' existe, se não, criar
-//  const dirPath = path.join(__dirname);
-//  if (!fs.existsSync(dirPath)) {
-//      fs.mkdirSync(dirPath, { recursive: true });
-//  }
-
 // Conectar ao banco de dados SQLite
 const db = new sqlite3.Database(dbPath, (err) => {
     if (err) {
@@ -52,19 +46,6 @@ const db = new sqlite3.Database(dbPath, (err) => {
                 console.error('Erro ao criar tabela:', err.message);
             } else {
                 console.log('Tabela "despesa" verificada ou criada com sucesso.');
-
-                // Adicionar a coluna 'vencimento' caso não exista
-                // db.run(`ALTER TABLE despesa ADD COLUMN vencimento DATE`, (err) => {
-                //     if (err) {
-                //         if (err.message.includes("duplicate column")) {
-                //             console.log("A coluna 'vencimento' já existe.");
-                //         } else {
-                //             console.error("Erro ao adicionar coluna 'vencimento':", err.message);
-                //         }
-                //     } else {
-                //         console.log("Coluna 'vencimento' adicionada com sucesso.");
-                //     }
-                // });
             }
         });
     }
@@ -215,11 +196,11 @@ app.delete('/api/entrada/:id', (req, res) => {
             console.error('Erro ao excluir a entrada:', err.message);
             return res.status(500).json({ error: err.message });
         }
-
+        http://localhost:5173/editar-despesa
         if (this.changes === 0) {
             console.log(`Entrada com ID ${id} não encontrada para exclusão.`);
             return res.status(404).json({ message: 'Entrada de valores não encontrada' });
-        }
+        } Debug
 
         console.log(`Entrada com ID ${id} excluída com sucesso.`);
         res.status(200).json({ message: 'Entrada de valores excluída com sucesso' });
