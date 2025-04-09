@@ -200,8 +200,8 @@ app.delete('/api/entrada/:id', (req, res) => {
         if (this.changes === 0) {
             console.log(`Entrada com ID ${id} não encontrada para exclusão.`);
             return res.status(404).json({ message: 'Entrada de valores não encontrada' });
-        } Debug
-
+        } 
+        
         console.log(`Entrada com ID ${id} excluída com sucesso.`);
         res.status(200).json({ message: 'Entrada de valores excluída com sucesso' });
     });
